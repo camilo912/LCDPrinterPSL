@@ -17,11 +17,11 @@ public class ImpresorLCD {
     static final String POSICION_X = "X";
     static final String POSICION_Y = "Y";
 
-    private int size; //tamaño del numero
-    private int filasDig; //numero de filas por digito
-    private int columDig; //numero de columnas por digito
-    private int totalFilas; //numero total de filas de todos los digitos
-    private int totalColum; //numero total de columnas de todos los digitos
+    private int size; // Tamaño del numero
+    private int filasDig; // Numero de filas por digito
+    private int columDig; // Numero de columnas por digito
+    private int totalFilas; // Numero total de filas de todos los digitos
+    private int totalColum; // Numero total de columnas de todos los digitos
 
     public ImpresorLCD() {
         // Inicializa variables
@@ -212,10 +212,10 @@ public class ImpresorLCD {
         int pivotX = 0;
         char[] digitos;
 
-        // se calculan las variables globales
+        // Se calculan las variables globales
         calcularVariables(size, espacio, numeroImp);
 
-        // crea el arreglo de digitos
+        // Crea el arreglo de digitos
         digitos = numeroImp.toCharArray();
 
         // Inicializa matriz
@@ -225,13 +225,13 @@ public class ImpresorLCD {
             }
         }
 
-        // procesa cada digito
+        // Procesa cada digito
         for (char digito : digitos) {
 
-            // numero que representa el caracter
+            // Numero que representa el caracter
             int numero = digito - 48;
 
-            //se calculan los puntos fijos del digito
+            // Se calculan los puntos fijos del digito
             calcularPuntosFijos(pivotX);
 
             pivotX = pivotX + this.columDig + espacio;
@@ -268,29 +268,29 @@ public class ImpresorLCD {
                     + " no contiene caracter ,");
         }
 
-        //Se hace el split de la cadena
+        // Se hace el split de la cadena
         parametros = comando.split(",");
 
-        //Valida la cantidad de parametros
+        // Valida la cantidad de parametros
         if(parametros.length>2)
         {
            throw new IllegalArgumentException("Cadena " + comando
                     + " contiene mas caracteres , que los necesarios(1)");
         }
 
-        //Valida la cantidad de parametros
+        // Valida la cantidad de parametros
         if(parametros.length<2)
         {
            throw new IllegalArgumentException("Cadena " + comando
                     + " no contiene los parametros requeridos");
         }
 
-        //Valida que el parametro size sea numerico
+        // Valida que el parametro size sea numerico
         if(isNumeric(parametros[0]))
         {
             tam = Integer.parseInt(parametros[0]);
 
-            // se valida que el size este entre 1 y 10
+            // Se valida que el size este entre 1 y 10
             if(tam <1 || tam >10)
             {
                 throw new IllegalArgumentException("El parametro size ["+tam
@@ -303,7 +303,7 @@ public class ImpresorLCD {
                     + parametros[0] + "] no es un numero");
         }
 
-        // valida que el parametro numero a imprimir sea numerico
+        // Valida que el parametro numero a imprimir sea numerico
         if(isNumeric(parametros[1]))
         {
           // Realiza la impresion del numero
@@ -388,4 +388,32 @@ public class ImpresorLCD {
 
     }
 
+    /**
+     *
+     * Metodo que retorna variables globales
+     *
+     */
+     public int[] getVaraiblesGlobales(){
+       int [] vars = new int [4];
+       vars[0] = filasDig;
+       vars[1] = columDig;
+       vars[2] = totalFilas;
+       vars[3] = totalColum;
+       return vars;
+     }
+
+    /**
+     *
+     * Metodo que retorna los puntos fijos
+     *
+     */
+     public int[][] getPuntosFijos(){
+       int [][] puntos = new int [5][2];
+       puntos[0] = pf1;
+       puntos[1] = pf2;
+       puntos[2] = pf3;
+       puntos[3] = pf4;
+       puntos[4] = pf5;
+       return puntos;
+     }
 }
