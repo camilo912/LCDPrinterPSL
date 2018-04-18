@@ -30,8 +30,35 @@ public class ImpresorLCDTest{
     Assert.assertArrayEquals(printer2.getPuntosFijos(), tester2);
   }
 
-  /*@Test
-  public void getVaraiblesGlobalesTest(){
+  @Test
+  public void variaiblesGlobalesTest(){
+      printer1.procesar("2,123", 2);
+      printer2.procesar("5,67589", 4);
+      int [] tester1 = {7, 4, 7, 16};
+      int [] tester2 = {13, 7, 13, 51};
+      Assert.assertArrayEquals(tester1, printer1.getVaraiblesGlobales());
+      Assert.assertArrayEquals(tester2, printer2.getVaraiblesGlobales());
+  }
 
-  }*/
+  @Test
+  public void matrizImpresionTest(){
+    printer1.procesar("2,123", 2);
+    printer2.procesar("1,67589", 2);
+    String [][] tester1 = {
+          {" "," "," "," "," "," "," ","-","-"," "," "," "," ","-","-"," "},
+          {" "," "," ","|"," "," "," "," "," ","|"," "," "," "," "," ","|"},
+          {" "," "," ","|"," "," "," "," "," ","|"," "," "," "," "," ","|"},
+          {" "," "," "," "," "," "," ","-","-"," "," "," "," ","-","-"," "},
+          {" "," "," ","|"," "," ","|"," "," "," "," "," "," "," "," ","|"},
+          {" "," "," ","|"," "," ","|"," "," "," "," "," "," "," "," ","|"},
+          {" "," "," "," "," "," "," ","-","-"," "," "," "," ","-","-"," "}};
+    String [][] tester2 = {
+          {" ","-"," "," "," "," ","-"," "," "," "," ","-"," "," "," "," ","-"," "," "," "," ","-"," "},
+          {"|"," "," "," "," "," "," ","|"," "," ","|"," "," "," "," ","|"," ","|"," "," ","|"," ","|"},
+          {" ","-"," "," "," "," "," "," "," "," "," ","-"," "," "," "," ","-"," "," "," "," ","-"," "},
+          {"|"," ","|"," "," "," "," ","|"," "," "," "," ","|"," "," ","|"," ","|"," "," "," "," ","|"},
+          {" ","-"," "," "," "," "," "," "," "," "," ","-"," "," "," "," ","-"," "," "," "," ","-"," "},};
+    Assert.assertArrayEquals(tester1, printer1.getMatriz());
+    Assert.assertArrayEquals(tester2, printer2.getMatriz());
+  }
 }

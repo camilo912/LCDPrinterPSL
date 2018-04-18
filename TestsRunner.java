@@ -10,6 +10,10 @@ public class TestsRunner {
          System.out.println(failure.toString());
       }
 
-      System.out.println(result.wasSuccessful());
+      if(result.wasSuccessful()){
+        System.out.println("Todas las pruebas correctas");
+      } else {
+        System.out.println("Fallaron algunas pruebas");
+      }
    }
 }

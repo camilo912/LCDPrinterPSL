@@ -44,7 +44,7 @@ public class ImpresorLCD {
      */
     private void adicionarLinea(String[][] matriz, int[] punto, String posFija,
             int size, String caracter) {
-
+        // Agregar linea horizontal
         if (posFija.equalsIgnoreCase(POSICION_X))
         {
             for (int y = 1; y <= size; y++)
@@ -53,7 +53,7 @@ public class ImpresorLCD {
                 matriz[punto[0]][valor] = caracter;
             }
         }
-        else
+        else // Agregar linea vertical
         {
             for (int i = 1; i <= size; i++)
             {
@@ -416,4 +416,13 @@ public class ImpresorLCD {
        puntos[4] = pf5;
        return puntos;
      }
+
+     /**
+      *
+      * Metodo que retorna la matriz de imrpesion
+      *
+      */
+      public String[][] getMatriz(){
+        return matrizImpr;
+      }
 }
